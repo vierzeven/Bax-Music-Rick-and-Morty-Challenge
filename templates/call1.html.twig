@@ -1,0 +1,10 @@
+<h1>Characters</h1>
+<p>
+        {{ dump(characters) }}
+</p>
+
+<ul>
+    {% for character in characters.results %}
+        <li>{{ character.name }}</li>
+    {% endfor %}
+</ul>
