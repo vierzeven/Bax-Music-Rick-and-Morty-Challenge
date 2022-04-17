@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Http\RickAndMortyApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
-class CharacterController extends AbstractController
+class LocationController extends AbstractController
 {
     /**
      * @var RickAndMortyApiClient
@@ -23,21 +21,22 @@ class CharacterController extends AbstractController
     }
 
     /**
-     * Returns all characters
+     * Returns all locations
      * @return mixed
      */
     public function index()
     {
-        return $this->apiClient->callAPI('character');
+        return $this->apiClient->callAPI('location');
     }
 
     /**
-     * Returns one specific character
+     * Returns one specific location
      * @param $id
      * @return mixed
      */
     public function show($id)
     {
-        return $this->apiClient->callAPI('character/' . $id);
+        return $this->apiClient->callAPI('location/' . $id);
     }
+
 }

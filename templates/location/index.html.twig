@@ -1,4 +1,4 @@
-<h1>Character List</h1>
+<h1>Location List</h1>
 
 <style>
     * {
@@ -20,10 +20,11 @@
 </style>
 
 <div class="flexcontainer">
-    {% for character in characters.results %}
+    {% for location in locations.results %}
         <div class="flexcontainer flexcolumn charactercard">
-            <h3>{{ character.name }}</h3>
-            <img src="{{ character.image }}" alt="Image of {{ character.name }}">
+            <h3>{{ location.name }}</h3>
+            <a href="{{ path('location_show', { id: location.id }) }}">GO!
+            </a>
         </div>
     {% endfor %}
 </div>

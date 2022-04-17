@@ -2,26 +2,26 @@
 
 namespace App\Http;
 
-use Symfony\Contracts\HttpClient\HttpClientInterface;
-
 class RickAndMortyApiClient
 {
-    private HttpClientInterface $httpClient;
-    private const URL = 'https://rickandmortyapi.com/api';
+    public function callAPI($endpoint) {
+        // create & initialize a curl session
+        $curl = curl_init();
 
-    public function __construct(HttpClientInterface $httpClient)
-    {
-        $this->httpClient = $httpClient;
-    }
+        // set our url with curl_setopt()
+        curl_setopt($curl, CURLOPT_URL, "https://rickandmortyapi.com/api/{$endpoint}");
 
-    public function fetchData()
-    {
-        $response = $this->httpClient->request('GET', self::URL, [
+        // return the transfer as a string, also with setopt()
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-        ]);
+        // curl_exec() executes the started curl session
+        // $output contains the output string
+        $output = curl_exec($curl);
 
-        $test = json_decode($response->getContent())->characters;
+        // close curl resource to free up system resources
+        // (deletes the variable made by curl_init)
+        curl_close($curl);
 
-        return $test;
+        return json_decode($output, true);
     }
 }

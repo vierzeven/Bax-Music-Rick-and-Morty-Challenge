@@ -1,12 +1,23 @@
-<h1>Character Show</h1>
+<h1>{{ character.name }}</h1>
+<img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+<table>
+    <tr>
+        <td>Status:</td>
+        <td>{{ character.status }}</td>
+    </tr>
+    <tr>
+        <td>Species:</td>
+        <td>{{ character.species }}</td>
+    </tr>
+    <tr>
+        <td>Type:</td>
+        <td>{{ character.type }}</td>
+    </tr>
+    <tr>
+        <td>Gender:</td>
+        <td>{{ character.gender }}</td>
+    </tr>
+</table>
 
-<ul>
-        {% if character.error is defined %}
-            <h3>No results</h3>
 
-        {% else %}
-            {% for item in character.results %}
-                <li>{{ item.name }}</li>
-            {% endfor %}
-        {% endif %}
-</ul>
+
