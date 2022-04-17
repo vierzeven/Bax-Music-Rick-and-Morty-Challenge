@@ -1,0 +1,12 @@
+<h1>Character Show</h1>
+
+<ul>
+        {% if character.error is defined %}
+            <h3>No results</h3>
+
+        {% else %}
+            {% for item in character.results %}
+                <li>{{ item.name }}</li>
+            {% endfor %}
+        {% endif %}
+</ul>
