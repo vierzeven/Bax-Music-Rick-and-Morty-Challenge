@@ -1,7 +1,30 @@
 <h1>Character List</h1>
 
-<ul>
+<style>
+    * {
+        font-family: sans-serif;
+    }
+    .flexcontainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .flexcolumn {
+        flex-direction: column;
+    }
+    .charactercard {
+        border-radius: 2rem;
+        margin: 1rem;
+        padding: 1rem;
+        border: solid 1px black;
+    }
+</style>
+
+<div class="flexcontainer">
     {% for character in characters.results %}
-        <li>{{ character.name }}</li>
+        <div class="flexcontainer flexcolumn charactercard">
+            <h3>{{ character.name }}</h3>
+            <img src="{{ character.image }}" alt="Image of {{ character.name }}">
+        </div>
     {% endfor %}
-</ul>
+</div>
+
