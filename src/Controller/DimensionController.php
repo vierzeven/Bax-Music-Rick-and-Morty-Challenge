@@ -50,7 +50,7 @@ class DimensionController
      * @param $id
      * @return mixed
      */
-    public function show($name)
+    public function show($name, $page)
     {
         // Prepare empty array
         $residentIds = [];
@@ -72,11 +72,18 @@ class DimensionController
         }
         $residentIds = array_unique($residentIds);
         asort($residentIds);
+        $size = sizeof($residentIds);
+        $pages = ceil($size / 10);
         $characters = [];
-        foreach ($residentIds as $residentId) {
-            $characters[] = $this->apiClient->callAPI('character/' . $residentId);
+        if ($page * 10 - 1 < $size) {
+            $limit = $page * 10 - 1;
+        } else {
+            $limit = $size;
         }
-        return [$name, $characters];
+        for ($i = ($page - 1) * 10 ; $i < $limit ; $i++) {
+            $characters[] = $this->apiClient->callAPI('character/' . $residentIds[$i]);
+        }
+        return [$name, $characters, $pages];
     }
 
 }

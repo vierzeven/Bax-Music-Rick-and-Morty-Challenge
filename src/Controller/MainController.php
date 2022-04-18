@@ -119,11 +119,12 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
      * @param $id
      * @return Response
      */
-    #[Route('/dimension/{name}', name: 'dimension_show')]
-    public function dimensionShow($name): Response
+    #[Route('/dimension/{name}/page/{page}', name: 'dimension_show')]
+    public function dimensionShow($name, $page): Response
     {
         return $this->render('dimension/show.html.twig', [
-            'dimension' => $dimension = $this->dimensionController->show($name)
+            'dimension' => $dimension = $this->dimensionController->show($name, $page),
+            'page' => $page
         ]);
     }
 

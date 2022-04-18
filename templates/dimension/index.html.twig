@@ -11,7 +11,7 @@
     <div class="flexcontainer">
         {% for dimension in dimensions %}
             <div class="flexcontainer flexcolumn card locationcard">
-                <a href="{{ path('dimension_show', { name: dimension }) }}">
+                <a href="{{ path('dimension_show', { name: dimension, page: 1 }) }}">
                     <h4>{{ dimension }}</h4>
                 </a>
             </div>

@@ -2,30 +2,70 @@
 
 {% block content %}
 
+    {% set previousPage = page - 1 %}
+    {% set nextPage = page + 1 %}
+    {% set name = dimension[0] %}
+    {% set characters = dimension[1] %}
+    {% set pages = dimension[2] %}
+
     <a href="{{ path('dimension_index') }}">
         <div class="rambutton">
             Dimensions
         </div>
     </a>
 
-    <table>
+    <table id="dimensiontable">
         <tr class="item-name">
-            <td colspan="2">{{ dimension[0] }}</td>
+            <td colspan="2">{{ name }}</td>
         </tr>
     </table>
+
+    <div class="flexcontainer pagination">
+
+        {% if page > 1 %}
+            <a href="{{ path('dimension_show', { name: name, page: previousPage }) }}">
+                <h2 class="previous">&larr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+        <h2 class="current">
+            PAGE {{ page }} of {{ pages }}
+        </h2>
+
+        {% if page < pages %}
+            <a href="{{ path('dimension_show', { name: name, page: nextPage }) }}">
+                <h2 class="next">&rarr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+    </div>
+
 
     <table>
         <tr class="item-name">
             <td colspan="2">Characters last seen here:</td>
         </tr>
-        {% for character in dimension[1] %}
+        {% if characters|length == 0 %}
             <tr class="item-attribute">
-                <td>
-                    <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+                <td colspan="2">
+                    None
                 </td>
-                <td>{{ character.name }}</td>
             </tr>
-        {% endfor %}
+        {% else %}
+            {% for character in characters %}
+                <tr class="item-attribute">
+                    <td>
+                        <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+                    </td>
+                    <td>{{ character.name }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+
     </table>
 
 {% endblock %}
