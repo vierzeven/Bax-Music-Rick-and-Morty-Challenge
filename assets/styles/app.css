@@ -1,19 +1,23 @@
 @font-face {
     font-family: 'get_schwifty';
-    src: url('./fonts/get_schwifty/get_schwifty.ttf');
-    font-weight: 400;
     font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/get_schwifty/get_schwifty.ttf');
 }
 
 @font-face {
     font-family: quicksand;
-    src: url('./fonts/Quicksand/Quicksand-VariableFont_wght.ttf');
-    font-weight: 400;
     font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/Quicksand/Quicksand-VariableFont_wght.ttf');
 }
 
 * {
     box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
 
 body {
@@ -26,10 +30,6 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-a {
-    text-decoration: none;
 }
 
 h1, h2, h3, h4, h5 {
@@ -53,6 +53,26 @@ h4 {
     color: black;
     font-size: 2.5rem;
     margin: 1rem;
+}
+
+table {
+    border: solid 10px #BFDE42;
+    color: black;
+    font-family: quicksand, sans-serif;
+    font-size: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+td {
+    height: 2rem;
+    padding: 2rem;
+}
+
+td, tr {
+    border-collapse: collapse;
+    border-right: none;
+    font-size: 2.5rem;
 }
 
 #content {
@@ -99,7 +119,7 @@ h4 {
     width: 100%;
 }
 
-.flexcontainer.charactercard {
+.flexcontainer.card {
     background: white;
     border: solid 1px black;
     margin: 1rem;
@@ -107,19 +127,35 @@ h4 {
     width: fit-content;
 }
 
+.flexcontainer.locationcard {
+    background: #BFDE42;
+    width: 100%;
+}
+
+.item-attribute {
+    background: white;
+}
+
+.item-name {
+    background: #BFDE42;
+    color: black;
+    font-family: get_schwifty, sans-serif;
+    font-size: 3rem;
+}
+
 .previous, .next {
     color: white;
 }
 
 .rambutton {
-    background: white;
-    border: solid 10px #BFDE42;
-    height: 8rem;
-    border-radius: 4rem;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 2rem;
-    font-size: 3rem;
+    background: #42B4C9;
+    border: solid 10px #BFDE42;
+    border-radius: 4rem;
     color: black;
+    display: flex;
+    font-size: 3rem;
+    height: 8rem;
+    justify-content: center;
+    margin: 2rem;
 }

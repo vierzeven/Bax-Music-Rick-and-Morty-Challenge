@@ -2,13 +2,45 @@
 
 {% block content %}
 
-    <h3>Location List</h3>
+    <a href="{{ path('location_index', { page: 1 }) }}">
+        <div class="rambutton">
+            Locations
+        </div>
+    </a>
+
+    <div class="flexcontainer pagination">
+
+        {% set previousPage = page - 1 %}
+        {% set nextPage = page + 1 %}
+
+        {% if page > 1 %}
+            <a href="{{ path('location_index', { page: previousPage }) }}">
+                <h2 class="previous">&larr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+        <h2 class="current">
+            PAGE {{ page }} of {{ locations.info.pages }}
+        </h2>
+
+        {% if page < locations.info.pages %}
+            <a href="{{ path('location_index', { page: nextPage }) }}">
+                <h2 class="next">&rarr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+    </div>
+
 
     <div class="flexcontainer">
         {% for location in locations.results %}
-            <div class="flexcontainer flexcolumn charactercard">
-                <h4>{{ location.name }}</h4>
-                <a href="{{ path('location_show', { id: location.id }) }}">GO!
+            <div class="flexcontainer flexcolumn card locationcard">
+                <a href="{{ path('location_show', { id: location.id }) }}">
+                    <h4>{{ location.name }}</h4>
                 </a>
             </div>
         {% endfor %}

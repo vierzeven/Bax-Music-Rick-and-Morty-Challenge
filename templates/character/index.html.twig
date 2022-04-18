@@ -2,9 +2,11 @@
 
 {% block content %}
 
-    <div class="rambutton">
-        Characters
-    </div>
+    <a href="{{ path('character_index', { page: 1 }) }}">
+        <div class="rambutton">
+            Characters
+        </div>
+    </a>
 
     <div class="flexcontainer pagination">
 
@@ -35,7 +37,7 @@
 
     <div class="flexcontainer">
         {% for character in characters.results %}
-            <div class="flexcontainer flexcolumn charactercard">
+            <div class="flexcontainer flexcolumn card">
                 <h4>{{ character.name }}</h4>
                 <a href="{{ path('character_show', { id: character.id }) }}">
                     <img src="{{ character.image }}" alt="Picture of {{ character.name }}">

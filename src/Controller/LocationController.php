@@ -24,9 +24,14 @@ class LocationController extends AbstractController
      * Returns all locations
      * @return mixed
      */
-    public function index()
+    public function index($page)
     {
-        return $this->apiClient->callAPI('location');
+        $locations = $this->apiClient->callAPI('location?page=' . $page);
+        if (isset($locations['error'])) {
+            return [];
+        } else {
+            return $locations;
+        }
     }
 
     /**

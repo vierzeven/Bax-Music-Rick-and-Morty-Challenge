@@ -64,11 +64,16 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
      * Shows an index of locations
      * @return Response
      */
-    #[Route('/location', name: 'location_index')]
-    public function locationIndex(): Response
+    #[Route('/location/page/{page}', name: 'location_index')]
+    public function locationIndex($page): Response
     {
+        $locations = $this->locationController->index($page);
+        if (sizeof($locations) == 0) {
+            return $this->redirectToRoute('homepage');
+        }
         return $this->render('location/index.html.twig', [
-            'locations' => $locations = $this->locationController->index()
+            'locations' => $locations,
+            'page' => $page
         ]);
     }
 

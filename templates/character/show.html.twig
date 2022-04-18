@@ -2,25 +2,30 @@
 
 {% block content %}
 
-    <div class="rambutton">
-        {{ character.name }}
-    </div>
+    <a href="{{ path('character_index', { page: 1 }) }}">
+        <div class="rambutton">
+            Characters
+        </div>
+    </a>
 
     <img class="characterimage" src="{{ character.image }}" alt="Picture of {{ character.name }}">
     <table>
-        <tr>
+        <tr class="item-name">
+            <td colspan="2">{{ character.name }}</td>
+        </tr>
+        <tr class="item-attribute">
             <td>Status:</td>
             <td>{{ character.status }}</td>
         </tr>
-        <tr>
+        <tr class="item-attribute">
             <td>Species:</td>
             <td>{{ character.species }}</td>
         </tr>
-        <tr>
+        <tr class="item-attribute">
             <td>Type:</td>
             <td>{{ character.type }}</td>
         </tr>
-        <tr>
+        <tr class="item-attribute">
             <td>Gender:</td>
             <td>{{ character.gender }}</td>
         </tr>
