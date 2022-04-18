@@ -84,7 +84,7 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
 
     // Get characters for specific dimension
     #[Route('/character/dimension/{name}', name: 'characters_in_dimension')]
-    public function dimension($name): Response
+    public function characterIndexForDimension($name): Response
     {
         // Get all locations
         // TODO: Consider pagination!!
