@@ -18,8 +18,9 @@
 {% block body %}
     <div id="content">
         <a href="{{ path('homepage') }}">
-            <h1>RICK AND MORTY</h1>
+            <img id="ramlogo" src="{{ asset('images/ram.svg') }}" alt="">
         </a>
+        <img id="rambanner" src="{{ asset('/images/rambanner.png') }}" alt="">
         <h2>BAX MUSIC CODING CHALLENGE</h2>
         {% block content %}{% endblock %}
     </div>

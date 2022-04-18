@@ -5,26 +5,27 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: quicksand;
+    src: url('./fonts/Quicksand/Quicksand-VariableFont_wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
 * {
-    font-family: get_schwifty, sans-serif;
     box-sizing: border-box;
-    /*border: dotted grey 1px;*/
 }
 
 body {
-    background-color: #181736;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 0;
+    background-color: #181736;
+    background: url('../../public/images/starrysky.jpg');
+    display: flex;
+    font-family: get_schwifty, sans-serif;
+    justify-content: center;
     margin: 0;
-}
-
-#content {
-    text-align: center;
-    color: deeppink;
-    padding: 6rem;
+    padding: 0;
+    width: 100%;
 }
 
 a {
@@ -35,28 +36,8 @@ h1, h2, h3, h4, h5 {
     margin: 0;
 }
 
-h1 {
-    color: #24c7e0;
-    -webkit-text-fill-color: #24c7e0;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    font-size: 8rem;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
-}
-
-@-webkit-keyframes glow {
-    from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #9FCA3C, 0 0 40px #9FCA3C, 0 0 50px #9FCA3C, 0 0 60px #9FCA3C, 0 0 70px #9FCA3C;
-    }
-    to {
-        text-shadow: 0 0 20px #fff, 0 0 30px #00ab2d, 0 0 40px #00ab2d, 0 0 50px #00ab2d, 0 0 60px #00ab2d, 0 0 70px #00ab2d, 0 0 80px #00ab2d;
-    }
-}
-
 h2 {
-    font-family: Verdana;
+    font-family: quicksand, sans-serif;
     font-size: 2.5rem;
     font-weight: 100;
     margin: 2rem;
@@ -74,38 +55,71 @@ h4 {
     margin: 1rem;
 }
 
-#rambutton {
-    background: lightyellow;
+#content {
+    color: deeppink;
+    padding: 4rem;
+    text-align: center;
+    width: 100%;
+}
+
+#rambanner {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+#ramlogo {
+    max-width: 50rem;
+    min-width: 6rem;
+    width: 100%;
+}
+
+.bullet {
+    color: transparent;
+}
+
+.characterimage {
+    border: solid 1.5rem white;
+}
+
+.flexcolumn {
+    flex-direction: column;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.flexcontainer.pagination {
+    color: white;
+    justify-content: space-between;
+    margin-top: -2rem;
+    width: 100%;
+}
+
+.flexcontainer.charactercard {
+    background: white;
+    border: solid 1px black;
+    margin: 1rem;
+    padding: 1rem;
+    width: fit-content;
+}
+
+.previous, .next {
+    color: white;
+}
+
+.rambutton {
+    background: white;
+    border: solid 10px #BFDE42;
     height: 8rem;
-    width: 70vw;
     border-radius: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2rem;
     font-size: 3rem;
-}
-
-a .previous, a .next {
-    color: white;
-}
-
-.flexcontainer.pagination {
-    width: 100%;
-    justify-content: space-between;
-}
-
-.flexcontainer {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.flexcolumn {
-    flex-direction: column;
-}
-.charactercard {
-    margin: 1rem;
-    padding: 1rem;
-    border: solid 1px black;
-    background: white;
+    color: black;
 }

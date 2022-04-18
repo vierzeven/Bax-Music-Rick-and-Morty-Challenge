@@ -2,7 +2,9 @@
 
 {% block content %}
 
-    <h3>Character List</h3>
+    <div class="rambutton">
+        Characters
+    </div>
 
     <div class="flexcontainer pagination">
 
@@ -11,22 +13,22 @@
 
             {% if page > 1 %}
                 <a href="{{ path('character_index', { page: previousPage }) }}">
-                    <h3 class="previous">&larr;</h3>
+                    <h2 class="previous">&larr;</h2>
                 </a>
             {% else %}
-                <h3>-</h3>
+                <h2 class="bullet">&bull;</h2>
             {% endif %}
 
-            <h3 class="current">
+            <h2 class="current">
                 PAGE {{ page }} of {{ characters.info.pages }}
-            </h3>
+            </h2>
 
             {% if page < characters.info.pages %}
             <a href="{{ path('character_index', { page: nextPage }) }}">
-                <h3 class="next">&rarr;</h3>
+                <h2 class="next">&rarr;</h2>
             </a>
             {% else %}
-                <h3>-</h3>
+                <h2 class="bullet">&bull;</h2>
             {% endif %}
 
     </div>
