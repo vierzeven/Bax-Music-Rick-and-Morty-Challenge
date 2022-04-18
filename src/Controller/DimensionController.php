@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Http\RickAndMortyApiClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
-class LocationController
+class DimensionController
 {
     /**
      * @var RickAndMortyApiClient
@@ -13,7 +15,7 @@ class LocationController
     private $apiClient;
 
     /**
-     * CharacterController constructor method
+     * DimensionController constructor method
      */
     public function __construct()
     {
@@ -21,24 +23,20 @@ class LocationController
     }
 
     /**
-     * Returns all locations
+     * Returns all dimensions
      * @return mixed
      */
     public function index($page)
     {
-        $locations = $this->apiClient->callAPI('location?page=' . $page);
-        return isset($locations['error']) ? [] : $locations;
     }
 
     /**
-     * Returns one specific location
+     * Returns one specific dimension
      * @param $id
      * @return mixed
      */
     public function show($id)
     {
-        $location = $this->apiClient->callAPI('location/' . $id);
-        return isset($location['error']) ? [] : $location;
     }
 
 }

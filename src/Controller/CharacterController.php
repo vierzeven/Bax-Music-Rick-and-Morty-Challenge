@@ -29,11 +29,7 @@ class CharacterController
     public function index($page)
     {
         $characters = $this->apiClient->callAPI('character?page=' . $page);
-        if (isset($characters['error'])) {
-            return [];
-        } else {
-            return $characters;
-        }
+        return isset($characters['error']) ? [] : $characters;
     }
 
     /**
@@ -43,6 +39,7 @@ class CharacterController
      */
     public function show($id)
     {
-        return $this->apiClient->callAPI('character/' . $id);
+        $character = $this->apiClient->callAPI('character/' . $id);
+        return isset($character['error']) ? [] : $character;
     }
 }

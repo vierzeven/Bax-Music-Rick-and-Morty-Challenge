@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
     private $characterController;
+    private $dimensionController;
     private $locationController;
 
     /**
@@ -17,6 +18,7 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
     public function __construct()
     {
         $this->characterController = new CharacterController();
+        $this->dimensionController = new DimensionController();
         $this->locationController = new LocationController();
     }
 
@@ -32,6 +34,7 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
 
     /**
      * Shows an index of characters
+     * @param $page
      * @return Response
      */
     #[Route('/character/page/{page}', name: 'character_index')]
@@ -55,6 +58,10 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
     #[Route('/character/{id}', name: 'character_show')]
     public function characterShow($id): Response
     {
+        $character = $this->characterController->show($id);
+        if (sizeof($character) == 0) {
+            return $this->redirectToRoute('homepage');
+        }
         return $this->render('character/show.html.twig', [
             'character' => $character = $this->characterController->show($id)
         ]);
@@ -62,6 +69,7 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
 
     /**
      * Shows an index of locations
+     * @param $page
      * @return Response
      */
     #[Route('/location/page/{page}', name: 'location_index')]
@@ -90,27 +98,21 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
         ]);
     }
 
-
-
-    // Get characters for specific dimension
-    #[Route('/character/dimension/{name}', name: 'characters_in_dimension')]
-    public function characterIndexForDimension($name): Response
+    /**
+     * Shows an index of dimensions
+     * @param $page
+     * @return Response
+     */
+    #[Route('/dimension/page/{page}', name: 'dimension_index')]
+    public function dimensionIndex($page): Response
     {
-        // Get all locations
-        // TODO: Consider pagination!!
-        $locations = $this->apiClient->callAPI('location');
-
-        // Extract all dimensions
-        $dimensions = [];
-        foreach ($locations['results'] as $location) {
-            $dimensions[] = $location['dimension'];
+        $dimensions = $this->dimensionController->index($page);
+        if (sizeof($dimensions) == 0) {
+            return $this->redirectToRoute('homepage');
         }
-        $dimensions = array_unique($dimensions);
-        asort($dimensions);
-
-        // Render view
-        return $this->render('character/dimension.html.twig', [
-            'output' => $dimensions
+        return $this->render('dimension/index.html.twig', [
+            'dimensions' => $dimensions,
+            'page' => $page
         ]);
     }
 }
