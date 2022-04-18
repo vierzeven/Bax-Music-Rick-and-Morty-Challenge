@@ -1,32 +1,48 @@
-<h1>Character List</h1>
+{% extends 'base.html.twig' %}
 
-<style>
-    * {
-        font-family: sans-serif;
-    }
-    .flexcontainer {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .flexcolumn {
-        flex-direction: column;
-    }
-    .charactercard {
-        border-radius: 2rem;
-        margin: 1rem;
-        padding: 1rem;
-        border: solid 1px black;
-    }
-</style>
+{% block content %}
 
-<div class="flexcontainer">
-    {% for character in characters.results %}
-        <div class="flexcontainer flexcolumn charactercard">
-            <h3>{{ character.name }}</h3>
-            <a href="{{ path('character_show', { id: character.id }) }}">
-                <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+    <h3>Character List</h3>
+
+    <div class="flexcontainer pagination">
+
+            {% set previousPage = page - 1 %}
+            {% set nextPage = page + 1 %}
+
+            {% if page > 1 %}
+                <a href="{{ path('character_index', { page: previousPage }) }}">
+                    <h3 class="previous">&larr;</h3>
+                </a>
+            {% else %}
+                <h3>-</h3>
+            {% endif %}
+
+            <h3 class="current">
+                PAGE {{ page }} of {{ characters.info.pages }}
+            </h3>
+
+            {% if page < characters.info.pages %}
+            <a href="{{ path('character_index', { page: nextPage }) }}">
+                <h3 class="next">&rarr;</h3>
             </a>
-        </div>
-    {% endfor %}
-</div>
+            {% else %}
+                <h3>-</h3>
+            {% endif %}
+
+    </div>
+
+    <div class="flexcontainer">
+        {% for character in characters.results %}
+            <div class="flexcontainer flexcolumn charactercard">
+                <h4>{{ character.name }}</h4>
+                <a href="{{ path('character_show', { id: character.id }) }}">
+                    <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
 

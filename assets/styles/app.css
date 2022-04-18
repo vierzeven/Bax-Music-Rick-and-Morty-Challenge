@@ -57,8 +57,21 @@ h1 {
 
 h2 {
     font-family: Verdana;
-    font-size: 4rem;
+    font-size: 2.5rem;
+    font-weight: 100;
     margin: 2rem;
+}
+
+h3 {
+    color: white;
+    font-size: 3rem;
+    margin: 2rem;
+}
+
+h4 {
+    color: black;
+    font-size: 2.5rem;
+    margin: 1rem;
 }
 
 #rambutton {
@@ -73,6 +86,15 @@ h2 {
     font-size: 3rem;
 }
 
+a .previous, a .next {
+    color: white;
+}
+
+.flexcontainer.pagination {
+    width: 100%;
+    justify-content: space-between;
+}
+
 .flexcontainer {
     display: flex;
     justify-content: center;
@@ -82,9 +104,8 @@ h2 {
     flex-direction: column;
 }
 .charactercard {
-    border-radius: 2rem;
     margin: 1rem;
     padding: 1rem;
     border: solid 1px black;
-    background: red;
+    background: white;
 }

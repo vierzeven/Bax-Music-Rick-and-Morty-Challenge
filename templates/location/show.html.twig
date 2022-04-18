@@ -1,14 +1,22 @@
-<h1>{{ location.name }}</h1>
-<table>
-    <tr>
-        <td>Type:</td>
-        <td>{{ location.type }}</td>
-    </tr>
-    <tr>
-        <td>Dimension:</td>
-        <td>{{ location.dimension }}</td>
-    </tr>
-</table>
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <h1>{{ location.name }}</h1>
+    <table>
+        <tr>
+            <td>Type:</td>
+            <td>{{ location.type }}</td>
+        </tr>
+        <tr>
+            <td>Dimension:</td>
+            <td>{{ location.dimension }}</td>
+        </tr>
+    </table>
+
+{% endblock %}
+
+
 
 
 

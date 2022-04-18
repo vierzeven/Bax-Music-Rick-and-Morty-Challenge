@@ -26,9 +26,14 @@ class CharacterController extends AbstractController
      * Returns all characters
      * @return mixed
      */
-    public function index()
+    public function index($page)
     {
-        return $this->apiClient->callAPI('character');
+        $characters = $this->apiClient->callAPI('character?page=' . $page);
+        if (isset($characters['error'])) {
+            return [];
+        } else {
+            return $characters;
+        }
     }
 
     /**

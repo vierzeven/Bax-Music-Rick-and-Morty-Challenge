@@ -17,8 +17,10 @@
 <body>
 {% block body %}
     <div id="content">
-        <h1>RICK AND MORTY</h1>
-        <h2>CODING CHALLENGE</h2>
+        <a href="{{ path('homepage') }}">
+            <h1>RICK AND MORTY</h1>
+        </a>
+        <h2>BAX MUSIC CODING CHALLENGE</h2>
         {% block content %}{% endblock %}
     </div>
 {% endblock %}

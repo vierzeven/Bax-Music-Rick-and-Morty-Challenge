@@ -34,11 +34,16 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
      * Shows an index of characters
      * @return Response
      */
-    #[Route('/character', name: 'character_index')]
-    public function characterIndex(): Response
+    #[Route('/character/page/{page}', name: 'character_index')]
+    public function characterIndex($page): Response
     {
+        $characters = $this->characterController->index($page);
+        if (sizeof($characters) == 0) {
+            return $this->redirectToRoute('homepage');
+        }
         return $this->render('character/index.html.twig', [
-            'characters' => $characters = $this->characterController->index()
+            'characters' => $characters,
+            'page' => $page
         ]);
     }
 
