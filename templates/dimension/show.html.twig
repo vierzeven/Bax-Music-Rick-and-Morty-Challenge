@@ -59,7 +59,9 @@
             {% for character in characters %}
                 <tr class="item-attribute">
                     <td>
-                        <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+                        <a href="{{ path('character_show', { id: character.id }) }}">
+                            <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+                        </a>
                     </td>
                     <td>{{ character.name }}</td>
                 </tr>

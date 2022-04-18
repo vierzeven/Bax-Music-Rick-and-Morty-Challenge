@@ -35,13 +35,12 @@ class DimensionController
             $locations = $this->apiClient->callAPI('location')['results'];
             // Loop through these locations...
             foreach ($locations as $location) {
-                // ...and extract the dimension!
+                // ...and extract the dimension (if it has a name and is not yet present in the array)
                 if ($location['dimension'] != 'unknown' and !in_array($location['dimension'], $dimensions)) {
                     $dimensions[] = $location['dimension'];
                 }
             }
         }
-//        $dimensions = array_unique($dimensions);
         return $dimensions;
     }
 
@@ -54,7 +53,7 @@ class DimensionController
     {
         // Prepare empty array
         $residentIds = [];
-        // Count the number of pages in the locations endpoint
+        // Check the number of pages in the locations endpoint
         $pages = $this->apiClient->callAPI('location')['info']['pages'];
         // Loop through all pages...
         for ($i = 0; $i < $pages; $i++) {
@@ -70,19 +69,20 @@ class DimensionController
                 }
             }
         }
+        // Remove duplicates and sort
         $residentIds = array_unique($residentIds);
         asort($residentIds);
-        $size = sizeof($residentIds);
-        $pages = ceil($size / 10);
+        // Calculate the number of pages (max 10 characters per page)
+        $pages = ceil(sizeof($residentIds) / 10);
+        // Prepare empty array
         $characters = [];
-        if ($page * 10 - 1 < $size) {
-            $limit = $page * 10 - 1;
-        } else {
-            $limit = $size;
-        }
+        // Calculate upper limit of for-loop
+        $limit = $page * 10 - 1 < sizeof($residentIds) ? $limit = $page * 10 - 1 : $limit = sizeof($residentIds);
+        // Fetch characters for this page
         for ($i = ($page - 1) * 10 ; $i < $limit ; $i++) {
             $characters[] = $this->apiClient->callAPI('character/' . $residentIds[$i]);
         }
+        // Return data
         return [$name, $characters, $pages];
     }
 
