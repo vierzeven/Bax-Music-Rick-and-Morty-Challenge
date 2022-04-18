@@ -8,7 +8,7 @@
 @font-face {
     font-family: quicksand;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 400 800;
     src: url('./fonts/Quicksand/Quicksand-VariableFont_wght.ttf');
 }
 
@@ -56,7 +56,7 @@ h4 {
 }
 
 table {
-    border: solid 0.5rem #BFDE42;
+    border: solid 0.5rem #42B4C9;
     color: black;
     font-family: quicksand, sans-serif;
     font-size: 2rem;
@@ -85,7 +85,7 @@ td, tr {
 #rambanner {
     margin-top: 2rem;
     width: 100%;
-    border: solid #BFDE42 0.5rem;
+    border: solid black 0.5rem;
 }
 
 #ramlogo {
@@ -99,7 +99,7 @@ td, tr {
 }
 
 .characterimage {
-    border: solid 1.5rem white;
+    border: solid 0.5rem white;
 }
 
 .flexcolumn {
@@ -129,8 +129,10 @@ td, tr {
 }
 
 .flexcontainer.locationcard {
-    background: #BFDE42;
+    background: white;
     width: 100%;
+    border: solid 0.5rem #42B4C9;
+    font-family: quicksand, sans-serif;
 }
 
 .item-attribute {
@@ -140,8 +142,9 @@ td, tr {
 .item-name {
     background: #BFDE42;
     color: black;
-    font-family: get_schwifty, sans-serif;
+    font-family: quicksand, sans-serif;
     font-size: 3rem;
+    font-weight: 800;
 }
 
 .previous, .next {
@@ -150,8 +153,8 @@ td, tr {
 
 .rambutton {
     align-items: center;
-    background: #42B4C9;
-    border: solid 0.5rem #BFDE42;
+    background: #BFDE42;
+    border: solid 0.5rem #42B4C9;
     border-radius: 4rem;
     color: black;
     display: flex;

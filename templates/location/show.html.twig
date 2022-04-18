@@ -18,9 +18,29 @@
         </tr>
         <tr class="item-attribute">
             <td>Dimension:</td>
-            <td>{{ location.type }}</td>
+            <td>{{ location.dimension }}</td>
         </tr>
     </table>
+
+    <table>
+        <tr class="item-name">
+            <td colspan="2">Characters last seen here:</td>
+        </tr>
+        <tr>
+            <td>Lorem</td>
+            <td>Ipsum</td>
+        </tr>
+{#        {% for character in dimension[1] %}#}
+{#            <tr class="item-attribute">#}
+{#                <td>#}
+{#                    <img src="{{ character.image }}" alt="Picture of {{ character.name }}">#}
+{#                </td>#}
+{#                <td>{{ character.name }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+
+    </table>
+
 
 {% endblock %}
 

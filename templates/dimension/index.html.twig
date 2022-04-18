@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DimensionController!{% endblock %}
+{% block content %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <a href="{{ path('dimension_index', { page: 1 }) }}">
+        <div class="rambutton">
+            Dimensions
+        </div>
+    </a>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="flexcontainer">
+        {% for dimension in dimensions %}
+            <div class="flexcontainer flexcolumn card locationcard">
+                <a href="{{ path('dimension_show', { name: dimension }) }}">
+                    <h4>{{ dimension }}</h4>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/joeyschmitz/Dropbox/CODE/HTDOCS/rick-and-morty-003/src/Controller/DimensionController.php'|file_link(0) }}">src/Controller/DimensionController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/joeyschmitz/Dropbox/CODE/HTDOCS/rick-and-morty-003/templates/dimension/index.html.twig'|file_link(0) }}">templates/dimension/index.html.twig</a></code></li>
-    </ul>
-</div>
+
 {% endblock %}
+
+
+

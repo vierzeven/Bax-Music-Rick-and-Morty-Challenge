@@ -100,19 +100,31 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
 
     /**
      * Shows an index of dimensions
-     * @param $page
      * @return Response
      */
-    #[Route('/dimension/page/{page}', name: 'dimension_index')]
-    public function dimensionIndex($page): Response
+    #[Route('/dimension', name: 'dimension_index')]
+    public function dimensionIndex(): Response
     {
-        $dimensions = $this->dimensionController->index($page);
+        $dimensions = $this->dimensionController->index();
         if (sizeof($dimensions) == 0) {
             return $this->redirectToRoute('homepage');
         }
         return $this->render('dimension/index.html.twig', [
-            'dimensions' => $dimensions,
-            'page' => $page
+            'dimensions' => $dimensions
         ]);
     }
+
+    /**
+     * Shows one specific dimension
+     * @param $id
+     * @return Response
+     */
+    #[Route('/dimension/{name}', name: 'dimension_show')]
+    public function dimensionShow($name): Response
+    {
+        return $this->render('dimension/show.html.twig', [
+            'dimension' => $dimension = $this->dimensionController->show($name)
+        ]);
+    }
+
 }
