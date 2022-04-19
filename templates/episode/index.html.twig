@@ -37,7 +37,7 @@
 
     <div class="flexcontainer">
         {% for episode in episodes.results %}
-            <a href="{{ path('episode_show', { id: episode.id }) }}">
+            <a href="{{ path('episode_show', { id: episode.id, page: 1 }) }}">
                 <div class="flexcontainer flexcolumn card episodecard">
                     <h4>{{ episode.episode }}</h4>
                     <h4>{{ episode.name }}</h4>

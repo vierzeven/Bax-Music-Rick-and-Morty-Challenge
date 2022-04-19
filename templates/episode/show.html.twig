@@ -1,48 +1,107 @@
+
+
+
+
+{#    <table>#}
+{#        <tr class="item-name">#}
+{#            <td colspan="2">Characters in this episode:</td>#}
+{#        </tr>#}
+{#        {% for character in characters %}#}
+{#            <tr class="item-attribute">#}
+{#                <td>#}
+{#                    <img src="{{ character.image }}" alt="Picture of {{ character.name }}">#}
+{#                </td>#}
+{#                <td>{{ character.name }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+
+{#    </table>#}
+
+
+{#{% endblock %}#}
+
 {% extends 'base.html.twig' %}
 
 {% block content %}
 
-    <a href="{{ path('location_index', { page: 1 }) }}">
+    {% set previousPage = page - 1 %}
+    {% set nextPage = page + 1 %}
+
+    <a href="{{ path('episode_index', { page: 1 }) }}">
         <div class="rambutton">
-            Locations
+            Episodes
         </div>
     </a>
 
-    <table>
+    <table id="episodetable">
         <tr class="item-name">
-            <td colspan="2">{{ location.name }}</td>
+            <td colspan="2">{{ episode.name }}</td>
         </tr>
         <tr class="item-attribute">
-            <td>Type:</td>
-            <td>{{ location.type }}</td>
+            <td>Episode:</td>
+            <td>{{ episode.episode }}</td>
         </tr>
         <tr class="item-attribute">
-            <td>Dimension:</td>
-            <td>{{ location.dimension }}</td>
+            <td>Airdate:</td>
+            <td>{{ episode.air_date }}</td>
         </tr>
     </table>
 
+    <div class="flexcontainer pagination">
+
+        {% if page > 1 %}
+            <a href="{{ path('episode_show', { id: episode.id, page: previousPage }) }}">
+                <h2 class="previous">&larr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+        <h2 class="current">
+            PAGE {{ page }} of {{ pages }}
+        </h2>
+
+        {% if page < pages %}
+            <a href="{{ path('episode_show', { id: episode.id, page: nextPage }) }}">
+                <h2 class="next">&rarr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+    </div>
+
+
     <table>
         <tr class="item-name">
-            <td colspan="2">Characters last seen here:</td>
+            <td colspan="2">Characters in this episode:</td>
         </tr>
-        <tr>
-            <td>Lorem</td>
-            <td>Ipsum</td>
-        </tr>
-        {#        {% for character in dimension[1] %}#}
-        {#            <tr class="item-attribute">#}
-        {#                <td>#}
-        {#                    <img src="{{ character.image }}" alt="Picture of {{ character.name }}">#}
-        {#                </td>#}
-        {#                <td>{{ character.name }}</td>#}
-        {#            </tr>#}
-        {#        {% endfor %}#}
+        {% if characters|length == 0 %}
+            <tr class="item-attribute">
+                <td colspan="2">
+                    None
+                </td>
+            </tr>
+        {% else %}
+            {% for character in characters %}
+                <tr class="item-attribute">
+                    <td>
+                        <a href="{{ path('character_show', { id: character.id }) }}">
+                            <img src="{{ character.image }}" alt="Picture of {{ character.name }}">
+                        </a>
+                    </td>
+                    <td>{{ character.name }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
 
     </table>
-
 
 {% endblock %}
+
+
+
+
 
 
 

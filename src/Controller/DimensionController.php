@@ -63,8 +63,8 @@ class DimensionController
             foreach ($locations as $location) {
                 // ...and extract the residentIds!
                 if ($location['dimension'] == $name) {
-                    foreach ($location['residents'] as $resident) {
-                        $residentIds[] = explode('/', $resident)[5];
+                    foreach ($location['residents'] as $residentUrl) {
+                        $residentIds[] = explode('/', $residentUrl)[5];
                     }
                 }
             }

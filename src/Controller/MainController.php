@@ -153,11 +153,18 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
      * @param $id
      * @return Response
      */
-    #[Route('/episode/{id}', name: 'episode_show')]
-    public function episodeShow($id): Response
+    #[Route('/episode/{id}/page/{page}', name: 'episode_show')]
+    public function episodeShow($id, $page): Response
     {
+        $data = $this->episodeController->show($id, $page);
+        $episode = $data[0];
+        $characters = $data[1];
+        $pages = $data[2];
         return $this->render('episode/show.html.twig', [
-            'episode' => $episode = $this->episodeController->show($id)
+            'episode' => $episode,
+            'characters' => $characters,
+            'pages' => $pages,
+            'page' => $page
         ]);
     }
 

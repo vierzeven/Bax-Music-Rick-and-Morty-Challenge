@@ -64,7 +64,7 @@ table {
     margin-bottom: 2rem;
 }
 
-table#dimensiontable {
+table#dimensiontable, table#episodetable {
     margin-bottom: 0;
 }
 

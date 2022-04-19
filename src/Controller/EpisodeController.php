@@ -34,10 +34,25 @@ class EpisodeController
      * @param $id
      * @return mixed
      */
-    public function show($id)
+    public function show($id, $page)
     {
         $episode = $this->apiClient->callAPI('episode/' . $id);
-        return isset($episode['error']) ? [] : $episode;
+        $characterIds = [];
+        foreach ($episode['characters'] as $characterUrl) {
+            $characterIds[] = explode('/', $characterUrl)[5];
+        }
+        // Calculate the number of pages (max 10 characters per page)
+        $pages = ceil(sizeof($characterIds) / 10);
+        // Prepare empty array
+        $characters = [];
+        // Calculate upper limit of for-loop
+        $limit = $page * 10 - 1 < sizeof($characterIds) ? $limit = $page * 10 - 1 : $limit = sizeof($characterIds);
+        // Fetch characters for this page
+        for ($i = ($page - 1) * 10 ; $i < $limit ; $i++) {
+            $characters[] = $this->apiClient->callAPI('character/' . $characterIds[$i]);
+        }
+        // Return data
+        return isset($episode['error']) ? [] : [$episode, $characters, $pages];
     }
 
 }
