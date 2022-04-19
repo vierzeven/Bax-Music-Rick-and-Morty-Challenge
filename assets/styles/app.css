@@ -132,11 +132,16 @@ td, tr {
     width: fit-content;
 }
 
-.flexcontainer.locationcard {
+.flexcontainer.locationcard, .flexcontainer.episodecard {
     background: white;
     width: 100%;
     border: solid 0.5rem #42B4C9;
     font-family: quicksand, sans-serif;
+}
+
+.flexcontainer.episodecard {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }
 
 .item-attribute {

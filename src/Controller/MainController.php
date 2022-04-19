@@ -9,6 +9,7 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
 {
     private $characterController;
     private $dimensionController;
+    private $episodeController;
     private $locationController;
 
     /**
@@ -19,6 +20,7 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
     {
         $this->characterController = new CharacterController();
         $this->dimensionController = new DimensionController();
+        $this->episodeController = new EpisodeController();
         $this->locationController = new LocationController();
     }
 
@@ -127,5 +129,37 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
             'page' => $page
         ]);
     }
+
+    /**
+     * Shows an index of episodes
+     * @param $page
+     * @return Response
+     */
+    #[Route('/episode/page/{page}', name: 'episode_index')]
+    public function episodeIndex($page): Response
+    {
+        $episodes = $this->episodeController->index($page);
+        if (sizeof($episodes) == 0) {
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('episode/index.html.twig', [
+            'episodes' => $episodes,
+            'page' => $page
+        ]);
+    }
+
+    /**
+     * Shows one specific episode
+     * @param $id
+     * @return Response
+     */
+    #[Route('/episode/{id}', name: 'episode_show')]
+    public function episodeShow($id): Response
+    {
+        return $this->render('episode/show.html.twig', [
+            'episode' => $episode = $this->episodeController->show($id)
+        ]);
+    }
+
 
 }

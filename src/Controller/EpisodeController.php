@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Http\RickAndMortyApiClient;
 
-class LocationController
+class EpisodeController
 {
     /**
      * @var RickAndMortyApiClient
@@ -12,7 +12,7 @@ class LocationController
     private $apiClient;
 
     /**
-     * CharacterController constructor method
+     * EpisodeController constructor method
      */
     public function __construct()
     {
@@ -20,24 +20,24 @@ class LocationController
     }
 
     /**
-     * Returns all locations
+     * Returns all episodes
      * @return mixed
      */
     public function index($page)
     {
-        $locations = $this->apiClient->callAPI('location?page=' . $page);
-        return isset($locations['error']) ? [] : $locations;
+        $episodes = $this->apiClient->callAPI('episode?page=' . $page);
+        return isset($episodes['error']) ? [] : $episodes;
     }
 
     /**
-     * Returns one specific location
+     * Returns one specific episode
      * @param $id
      * @return mixed
      */
     public function show($id)
     {
-        $location = $this->apiClient->callAPI('location/' . $id);
-        return isset($location['error']) ? [] : $location;
+        $episode = $this->apiClient->callAPI('episode/' . $id);
+        return isset($episode['error']) ? [] : $episode;
     }
 
 }

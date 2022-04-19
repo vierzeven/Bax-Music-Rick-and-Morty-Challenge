@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <a href="{{ path('episode_index', { page: 1 }) }}">
+        <div class="rambutton">
+            Episodes
+        </div>
+    </a>
+
+    <div class="flexcontainer pagination">
+
+        {% set previousPage = page - 1 %}
+        {% set nextPage = page + 1 %}
+
+        {% if page > 1 %}
+            <a href="{{ path('episode_index', { page: previousPage }) }}">
+                <h2 class="previous">&larr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+        <h2 class="current">
+            PAGE {{ page }} of {{ episodes.info.pages }}
+        </h2>
+
+        {% if page < episodes.info.pages %}
+            <a href="{{ path('episode_index', { page: nextPage }) }}">
+                <h2 class="next">&rarr;</h2>
+            </a>
+        {% else %}
+            <h2 class="bullet">&bull;</h2>
+        {% endif %}
+
+    </div>
+
+    <div class="flexcontainer">
+        {% for episode in episodes.results %}
+            <a href="{{ path('episode_show', { id: episode.id }) }}">
+                <div class="flexcontainer flexcolumn card episodecard">
+                    <h4>{{ episode.episode }}</h4>
+                    <h4>{{ episode.name }}</h4>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+
