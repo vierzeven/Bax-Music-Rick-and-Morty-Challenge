@@ -15,7 +15,7 @@ To get the project up and running, first clone it to your local machine. After t
 
 ---------
 
-####The Symfony Route
+#### The Symfony Route
 
 *For people who have the Symfony Console installed on their system*
 
@@ -25,7 +25,7 @@ To get the project up and running, first clone it to your local machine. After t
 
 ----------
 
-####The Docker Route
+#### The Docker Route
 
 *For people who have Docker Desktop installed on their system*
 
