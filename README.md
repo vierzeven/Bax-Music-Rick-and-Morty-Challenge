@@ -1,61 +1,43 @@
-## Rick and Morty Challenge
+## Rick and Morty Coding Challenge
 _By Joey Schmitz_
 
-This project was done by...
+![plaatje]
 
-------
-# H1
-### H3
-*emphasis*
+[plaatje]: https://cine.nl/wp-content/uploads/2017/11/RickMorty.jpg
 
-**strong emphasis**
 
-~~strike through~~
+This project is the result of the **Bax Music Rick and Morty Coding Challenge**, which was sent to me on Wednesday April 13th of 2022, after a very nice first conversation with Zoran Birač and Peter Adkins. 
+
 
 ---------
 
-1. Listitem 1 
-2. Listitem 2 
-  * Sublist 1 
-3. Listitem 3  
-   1. Sublist
-4. Blabla
+To get the project up and running, first clone it to your local machine. After that, you can choose one of two routes:
+
+---------
+
+####The Symfony Route
+*For people who have the Symfony Console installed on their system*
+
+1. Step 1 (TBT) 
+2. Step 2 (TBT)
+3. `symfony server:start -d`
 
 ----------
 
-Dit is een [link]
+####The Docker Route
+*For people who have Docker Desktop installed on their system*
 
-[link]: https://www.nu.nl
+1. Step 1 (TBT)
+2. Step 2 (TBT)
+3. `docker-compose build`
+4. `docker-compose up -d`
 
-------
+----------
 
-Een plaatje: ![plaatje]
+Homepage: [vierpluszeven.nl]
 
-[plaatje]: https://unsplash.it/200
+[vierpluszeven.nl]: https://www.vierpluszeven.nl
 
---------
 
-Een stukje code: `composer require markup`
-
-------
-
-Een blok code:
-```javascript
-let firstname = 'Joey';
-```
-
-```injectablephp
-$lastname = "Schmitz";
-```
-
------
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
---------
-
-> This is a blockquote.
+> “Any fool can write code that a computer can understand. Good programmers write code that humans can understand.”
+― Martin Fowler
